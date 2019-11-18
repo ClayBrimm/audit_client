@@ -27,10 +27,10 @@ function scrapeForm() {
       "processData": false,
       "data": `{\n\t\"\employee_identity\":\"${employee_id}\",\n\t\"employer_name\" : \"${employer_name}\"\n}`
     }
-
+    
     $.ajax(settings).done(function (response) {
-      console.log(response);
-        results.appendChild(response);
+        console.log(response);
+        alert(JSON.stringify(response))
     });
     
 /*    const poster = {
