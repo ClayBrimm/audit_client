@@ -30,7 +30,7 @@ function scrapeForm() {
     
     $.ajax(settings).done(function (response) {
         console.log(response);
-        alert(JSON.stringify(response))
+        alert(JSON.stringify(response));
     });
     
 /*    const poster = {
