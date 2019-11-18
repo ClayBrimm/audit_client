@@ -3,6 +3,7 @@ function scrapeForm() {
 
     var employee_id = document.getElementById("employee_id").value;
     var employer_name = document.getElementById("employer_name").value;
+    var results = document.getElementById("results").value;
 
     var scrapedData
     
@@ -29,6 +30,7 @@ function scrapeForm() {
 
     $.ajax(settings).done(function (response) {
       console.log(response);
+        results.appendChild(response);
     });
     
 /*    const poster = {
