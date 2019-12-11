@@ -60,7 +60,7 @@ function scrapeForm() {
     var scrapeJson = JSON.parse(scrapedData); 
     var sendJson = JSON.stringify(scrapeJson);
     
-    console.log(sendJson);
+    //console.log(sendJson);
     
     var settings = {
       "async": true,
@@ -77,10 +77,11 @@ function scrapeForm() {
     }
     
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        //console.log(response);
         alert(JSON.stringify(response));
         var result = JSON.parse(response)
         writeJSON(result);
+        
         document.getElementById("json").innerHTML = response;
     });
     
@@ -90,8 +91,63 @@ function writeJSON(data){
     for(var key in data){
         if(data.hasOwnProperty(key)){
             var value = data[key];
-            console.log(value['first_name']);
+            for(var key2 in value){
+                console.log(key2);
+            }  
+            //console.log(value['first_name']);
+            
         }
+    }
+    //TODO if specific employee
+    if(data[0] == 0){
+        CreateTableFromJSON(data);      
     }
 }
 
+function CreateTableFromJSON(data) {
+    
+    console.log("STEPPED INTO CreateTableFromJSON()");
+    var employeeJson = data;
+    console.log(employeeJson);
+    
+    // EXTRACT VALUE FOR HTML HEADER. 
+    var col = [];
+    var firstEntry = employeeJson[0];
+    for(var key in firstEntry){
+        col.push(key);
+    }
+    
+    console.log(col);
+    
+    // CREATE DYNAMIC TABLE.
+    var table = document.createElement("table");
+
+    // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+    var tr = table.insertRow(-1);                   // TABLE ROW.
+
+    for (var i = 0; i < col.length; i++) {
+        var th = document.createElement("th");      // TABLE HEADER.
+        th.innerHTML = col[i];
+        tr.appendChild(th);
+    }
+
+    // ADD JSON DATA TO THE TABLE AS ROWS.
+    for(var key in employeeJson){
+        if(data.hasOwnProperty(key)){
+            tr = table.insertRow(-1);
+            var value = employeeJson[key];
+            for(var key2 in value){
+                
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = value[key2];
+                
+            } 
+        }
+    }
+
+    //ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+    var divContainer = document.getElementById("emp_info");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
+}

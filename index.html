@@ -26,11 +26,11 @@
             <br>
             
             <h2>Change Indicator</h2>
-                <p>Rehire:  <input type="checkbox" name="rehire" value="rehire" id="rehire"></p>
-                <p>Add:  <input type="checkbox" name="add" value="add" id="add"></p>
-                <p>Delete:  <input type="checkbox" name="delete" value="delete" id="delete"></p>
-                <p>Reactivate:  <input type="checkbox" name="reactivate" value="reactivate" id="reactivate"></p>
-                <p>Change:  <input type="checkbox" name="change" value="change" id="change"></p>
+                <!-- <p>Rehire:  <input type="checkbox" name="rehire" value="rehire" id="rehire"></p> -->
+                <p>Add:  <input type="checkbox" name="add" value="add" id="add" checked></p>
+                <p>Delete:  <input type="checkbox" name="delete" value="delete" id="delete" checked></p>
+                <p>Reactivate:  <input type="checkbox" name="reactivate" value="reactivate" id="reactivate" checked></p>
+                <p>Change:  <input type="checkbox" name="change" value="change" id="change" checked></p>
             <br>
             
             <h2>Range</h2>
@@ -45,29 +45,8 @@
             
         </form>
         
-        <table border=".5" id = "emp_info">
-            <thead>
-            <tr>
-                <th>first name</th>
-                <th>last name</th>
-                <th>change indicator</th>
-                <th>job title</th>
-                <th>department</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
+        <div id = "emp_info">
+        </div>
         
         <h4>
             <pre id="json"></pre>
